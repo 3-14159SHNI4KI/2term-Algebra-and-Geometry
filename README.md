@@ -1,1 +1,1 @@
-# 3term-Algebra-and-Geometry
+# 2term-Algebra-and-Geometry
