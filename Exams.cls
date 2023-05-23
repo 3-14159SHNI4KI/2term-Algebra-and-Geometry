@@ -17,9 +17,9 @@
         \CYRP\cyrr\cyre\cyrd\cyrm\cyre\cyrt:~\@subject 
         \\[0.3cm]
         %Авторы
-        \CYRA\cyrv\cyrt\cyro\cyrr\cyr\cyrery:
-        \\[0.3cm]
-        \@author
+        %\CYRA\cyrv\cyrt\cyro\cyrr\cyr\cyrery:
+        %\\[0.3cm]
+        %\@author
     \end{center}
 }
 

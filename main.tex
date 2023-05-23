@@ -1,5 +1,7 @@
 \documentclass{Exams}
 \usepackage{preamble}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
 %   Используйте для теоремы окружение 
 %   \begin{theorem}[name] \end{theorem}
@@ -11,30 +13,34 @@
 %   замечание (remark)
 %   док-во (Proof) (именно с большой буквы)
 
+\fancyhead[RO]{\slshape Д. Дружкин, А. Орехова, А. Стюхина, В. Янченко \rightmark}
+\fancyfoot[C]{\thepage}
 
-\author{Денис Дружкин, Алина Орехова, Ангелина Стюхина, Вадим Янченко}
+\author{}
 \title{Билеты к зачету}
 \date{2023}
 \begin{document}
 
 \subject{Алгем}
 \ExamMakeTitle
-\section{Системы линейных уравнений}
+\section*{Системы линейных уравнений}
 \input{Linear_equations.tex}
 
-\section{Определители и их приложения}
+\section*{Определители и их приложения}
 \input{determinant.tex}
 
-\section {Алгебра многочленов (если выполнено домашнее задание, то раздел не нужно учить)}
+\section*{Алгебра многочленов}
+(если выполнено домашнее задание, то раздел не нужно учить)
+
 \input{polynomial.tex}
 
-\section{Группы}
+\section*{Группы}
 \input{groups.tex}
 
-\section{Линейные операторы и квадратичные формы}
+\section*{Линейные операторы и квадратичные формы}
 \input{map_form.tex}
 
-\section{Фигуры второго порядка на плоскости и в пространстве}
+\section*{Фигуры второго порядка на плоскости и в пространстве}
 \input{second.tex}
 
 \end{document}
