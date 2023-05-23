@@ -1,0 +1,17 @@
+#Executables that may come from C++ homeworks... or may not
+*.exe
+*.out
+*.app
+
+#Latex's trash
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.gz
+*.toc
+
+#Some more
+*.json
