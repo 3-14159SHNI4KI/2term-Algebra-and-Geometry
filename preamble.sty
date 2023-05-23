@@ -1,0 +1,49 @@
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[sort,compress]{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{thmtools}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[english,russian]{babel}
+\usepackage{minted}
+\usepackage[hidelinks]{hyperref}
+
+% \/\/ Теорема \/\/
+\newtheorem{theorem}{Теорема}[section]
+
+% \/\/ Определение \/\/
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[section]
+
+% \/\/ Лемма \/\/
+\theoremstyle{plain}
+\newtheorem{lemma}{Лемма}[section]
+
+% \/\/ Следствие \/\/
+\theoremstyle{plain}
+\newtheorem*{corollary}{Следствие}
+
+% \/\/ Пример \/\/
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+
+% \/\/ Замечание \/\/
+\theoremstyle{remark}
+\newtheorem*{remark}{Замечание}
+
+% \/\/ Док-во \/\/
+\declaretheoremstyle[
+    spaceabove=-6pt, 
+    spacebelow=6pt, 
+    %headfont=\normalfont\bfseries, 
+    bodyfont = \normalfont,
+    postheadspace=1em, 
+    qed=$\blacksquare$, 
+    headpunct={}]
+{Cool_Proof_style} 
+\declaretheorem[name={$\square$}, style=Cool_Proof_style, unnumbered]{Proof}
