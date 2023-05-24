@@ -5,6 +5,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsthm}
+\usepackage{physymb}
+\usepackage{ stmaryrd }
 \usepackage{fancyvrb}
 \usepackage{thmtools}
 \usepackage{longtable}
@@ -12,17 +14,25 @@
 \usepackage[english,russian]{babel}
 \usepackage{minted}
 \usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
 
+% Обозначение множества натуральных чисел
+\newcommand{\Nat}{\mathbb{N}}
+% Обозначение множества вещественных чисел
+\newcommand{\Real}{\mathbb{R}}
+% Обозначение эпсилона
+\newcommand{\eps}{\varepsilon}
 % \/\/ Теорема \/\/
-\newtheorem{theorem}{Теорема}[section]
+\newtheorem{theorem}{Теорема}[]
+
 
 % \/\/ Определение \/\/
 \theoremstyle{definition}
-\newtheorem{definition}{Определение}[section]
+\newtheorem{definition}{Определение}[]
 
 % \/\/ Лемма \/\/
 \theoremstyle{plain}
-\newtheorem{lemma}{Лемма}[section]
+\newtheorem{lemma}{Лемма}[]
 
 % \/\/ Следствие \/\/
 \theoremstyle{plain}
