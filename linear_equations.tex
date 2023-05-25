@@ -1,1 +1,334 @@
-404
+\subsection*{Определение системы линейных уравнений}
+\begin{definition}
+    \textit{Системой линейных уравнений} (далее СЛУ) называют систему вида:
+    \begin{equation}
+        \label{eq:SLU}
+        \begin{cases}
+        a_1^1x_1 +  a_1^2x_2 + \ldots + a_n^1x_n = b_1 \\
+        a_1^2x_1 +  a_2^2x_2 + \ldots + a_n^2x_n = b_2 \\
+        ~\vdots \\
+        a_1^mx_1 +  a_2^mx_2 + \dots + a_n^mx_n = b_m,
+    \end{cases}
+    \end{equation} 
+    где $a_j^i \in \Real$, $b_j \in \Real$, $m$ "--- количество уравнений, $n$ "--- количество переменных, $x_j^i$ "--- неизвестные, $a_j^i$ "--- коэффициенты, $b_j$ "--- свободные члены.
+\end{definition}
+$A = \begin{pmatrix}
+    a_1^1 & \cdots & a_1^n \\
+    \vdots & \ddots & \vdots \\
+    a_1^m & \cdots & a_n^m
+\end{pmatrix}$ называется \textit{матрицей коэффициентов}
+
+$\tilde{A} = (A~|~B) =
+\left({ 
+\begin{array}{ccc|c}
+    a_1^1 & \cdots & a_n^1 & b_1 \\
+    \vdots & \ddots & \vdots & \vdots \\
+    a_1^m & \cdots & a_n^m & b_m
+\end{array}} \right)$ "--- \textit{расширенная матрица коэффициентов}.
+
+Пусть $B = \begin{pmatrix}
+    b_1 \\
+    \vdots \\
+    b_m
+\end{pmatrix}$, $X = \begin{pmatrix}
+    x_1 \\
+    \vdots \\
+    x_m
+\end{pmatrix}$. 
+
+Тогда СЛУ можно переписать в матричном виде:
+$ AX = B$.
+
+\vspace{0.2cm}
+
+\begin{tikzpicture}
+    [sibling distance=5cm,
+    align=center]
+     \node {СЛУ}
+         child {node {совместные\\(есть решение)}
+          child{node {определённые\\(единственное решение)}}
+          child{node {неопределённые\\(более одного решения)}}}
+         child {node {несовместные\\(нет решений)}};
+\end{tikzpicture}
+
+\subsection*{Элементарные преобразования СЛУ и строк матрицы}
+
+\begin{definition}
+    \textit{Элементарными преобразованиями СЛУ} называются преобразования вида:
+    \begin{enumerate}
+        \item Прибавление к одному уравнению другое, умноженное на число,
+        \item Перестановка двух уравнений,
+        \item Умножение уравнения на число, отличное от нуля.
+    \end{enumerate}
+\end{definition}
+
+\subsection*{Метод Гаусса}
+
+\begin{definition}
+    \textit{Ведущим} элементом ненулевой строки называется её первый ненулевой элемент
+\end{definition}
+\begin{definition}
+    Матрица называется \textit{ступенчатой}, если
+    \begin{enumerate}
+        \item Номера ведущих элементов её ненулевых строк образует строго возрастающую последовательность,
+        \item Ненулевые строки (если они есть) стоят в конце.
+    \end{enumerate}
+\end{definition}
+\begin{example}[Ступенчатой матрицы]
+    $$\newcommand*{\temp}{\multicolumn{1}{c|}{0}}
+    \left(\begin{array}{cccccc}
+        0 & \temp & \ast & \ast & \ast & \ast \\ \cline{3-4}
+        0 & 0 & 0 & \temp & \ast  & \ast \\ \cline{5-5}
+        0 & 0 & 0 & 0 & \temp & \ast \\ \cline{6-6}
+        0 & 0 & 0 & 0 & 0 & 0
+        
+    \end{array}\right)
+    $$
+\end{example}
+
+\begin{theorem}
+    Всякую матрицу путём элементарных преобразований можно привести к ступенчатому виду.
+\end{theorem}
+\begin{definition}
+    СЛУ называется \textit{ступенчатой}, если её расширенная матрица ступенчатая
+\end{definition}
+
+\subsection*{Система однородных линейных уравнений}
+\begin{definition}
+    Система линейных уравнений называется однородной, если все свободные члены уравнений равны нулю:
+    \begin{equation}
+        \label{eq:SOLU}
+        \begin{cases}
+            a_1^1x_1 +  a_1^2x_2 + \ldots + a_n^1x_n = 0 \\
+            a_1^2x_1 +  a_2^2x_2 + \ldots + a_n^2x_n = 0 \\
+            ~\vdots \\
+            a_1^mx_1 +  a_2^mx_2 + \dots + a_n^mx_n = 0.
+        \end{cases}
+        \end{equation}
+\end{definition}
+Однородная система всегда совместна, поскольку она всегда имеет тривиальное (нулевое) решение.
+
+\begin{theorem}
+    Совокупность всех решений системы однородных линейных уравнений с $n$ неизвестными является подпространством $\Real^n$ (в общем случае $K^n$).
+
+    Совокупность всех решений произвольной совместной СЛУ есть сумма какого"=либо одного решения и подпространства решений системы однородных линейных уравнений с той же матрицей коэффициентов.
+\end{theorem}
+\begin{Proof}
+    Пусть $\bar{u} = (u_1, \ldots, u_n)$ и $\bar{v} = (v_1, \ldots, v_n)$ "--- решения \ref{eq:SOLU}.
+
+    Тогда $\bar{u} + \bar{v}$ "--- решение \ref{eq:SOLU}, так как
+    \begin{equation*}
+        \overbrace{a_1^1u_1 + \ldots + a_n^1u_n}^0 + \overbrace{a_1^1v_1 + \ldots + a_n^1v_n}^0 = 0.
+    \end{equation*}
+    Также $\lambda\bar{u}$ "--- решение \ref{eq:SOLU}, так как 
+    \begin{equation*}
+        \lambda\overbrace{(a_1^1u_1 + \ldots + a_n^1u_n)}^0 = 0.
+    \end{equation*}
+
+    Пусть $\bar{t} = (t_1, \ldots, t_n)$ "--- решение \ref{eq:SLU}, $\bar{u} = (u_1, \ldots, u_n)$ "--- решение \ref{eq:SOLU}.
+    
+    Тогда $\bar{t} + \bar{u}$ "--- решение \ref{eq:SLU}, так как
+    \begin{gather*}
+        a_1^1(t_1 + u_1) + \ldots + a_n^1(t_n + u_n) = b_1 \\
+        \underbrace{a_1^1t_1 + \ldots + a_n^1t_n}_{b_1} + \underbrace{a_1^1u_1 + \ldots + a_n^1u_n}_0 = b_1.
+    \end{gather*}
+
+    Пусть $\bar{f}$ "--- решение \ref{eq:SLU}. Тогда $\bar{p} = \bar{t} - \bar{f}$ "--- решение \ref{eq:SOLU}, так как
+    \begin{gather*}
+        a_1^1(t_1 - f_1) + \ldots + a_n^1(t_n - f_n) = \\ = \underbrace{a_1^1t_1 + \ldots + a_n^1t_n}_{b_1} - \underbrace{(a_1^1f_1 + \ldots + a_n^1f_n)}_{b_1} = 0
+    \end{gather*}
+\end{Proof}
+
+\subsection*{Векторное пространтсво}
+
+\begin{definition}
+    \textit{Векторным пространством} над полем $K$ называется множество $V$ с операциями сложения и умножения на элемент поля $K$, обладающая следующими свойствами:
+    \begin{enumerate}
+        \item $V$ "--- аддитивная абелева группа.
+        \item $\lambda(a + b) = \lambda a + \lambda b$
+        \item $(\lambda + \mu)a = \lambda a + \mu a$
+        \item $\lambda(\mu a) = (\lambda \mu)a$
+        \item $1 \cdot a = a$
+    \end{enumerate}
+    $\lambda,\mu \in K,~a,b \in V$.
+\end{definition}
+
+\begin{definition}
+    Пусть $S \subset V$. Совокупность всевозможных линейных комбинаций из векторов $S$ называется \textit{линейной оболочкой} множества $S$. Обозначние: $<\!S\!>$.
+\end{definition}
+Пространство $V$ \textit{порождается} множеством $S$, если $V = <\!S\!>$.
+
+\begin{definition}
+    Векторное пространство называется \textit{конечномерным}, если оно порождается конечным числом векторов и бесконечномерным в противном случае.
+\end{definition}
+\begin{definition}
+    \textit{Базисом} векторного пространства называется упорядоченная максимально линейно независимая система векторов, где каждый вектор пространства линейно выражается через эту систему.    
+\end{definition}
+
+\subsection*{Ранг}
+\begin{definition}
+    Рангом \textit{системы векторов} называется размерность её линейной оболочки.
+
+    Ранг \textit{матрицы} "--- это ранг системы её строк.
+\end{definition}
+\begin{definition}
+    Системы векторов $\{\bar{a}_1, \ldots, \bar{a}_n\}$ и $\{\bar{b}_1, \ldots, \bar{b}_m\}$ называются \textit{эквивалентными}, если каждый из векторов $\bar{b}_i$ линейно выражается через $\bar{a}_1, \ldots, \bar{a}_n$ и наоборот,
+    $\bar{a}_j$ линейно выражается через $\bar{b}_1, \ldots, \bar{b}_m$, где $i = 1,\ldots,m$ и $j = 1,\ldots, n$.
+
+    Это равносильно $<\!\bar{a}_1, \ldots, \bar{a}_n\!> = <\!\bar{b}_1, \ldots, \bar{b}_n\!>$.
+\end{definition}
+
+\begin{theorem}
+    Ранг матрицы равен числу ненулевых строк ступенчатой матрицы, к которой она приводится элементарными преобразованиями строк.
+\end{theorem}
+
+Линейная зависимость между столбцами матриц не меняется при элементарных преобразований строк. Ранг системы её столбцов не меняется при элементарных преобразований строк.
+
+Ранг системы строк любой матрицы равен рангу системы столбцов этой матрицы.
+
+\begin{theorem}[Кронекера-Капелли]
+    СЛУ совместна $\Leftrightarrow$  $rk(A|B) = rk\;A$.
+\end{theorem}
+\begin{Proof}
+$\Rightarrow$ Пусть система \ref{eq:SLU} совместна и $(k_1,\ldots, k_n)$ "--- решение СЛУ.
+\begin{equation*}
+    \begin{pmatrix}
+        a_1^1 \\
+        a_1^2 \\
+        \vdots \\
+        a_1^m
+    \end{pmatrix} k_1 +
+    \begin{pmatrix}
+        a_2^1 \\
+        a_2^2 \\
+        \vdots \\
+        a_2^m
+    \end{pmatrix} k_2 + \ldots + 
+    \begin{pmatrix}
+        a_n^1 \\
+        a_n^2 \\
+        \vdots \\
+        a_n^m
+    \end{pmatrix} k_n = 
+    \begin{pmatrix}
+        b_1 \\
+        b_2 \\
+        \vdots \\
+        b_m
+    \end{pmatrix}
+\end{equation*}
+Последний столбец расширенной матрицы есть линейная комбинация остальных столбцов с коэффициентами $(k_1,\ldots,k_n)$. Всякий другой столбец расширенной матрицы входит в матрицу $A$, поэтому линейно выражается через столбцы этой матрицы. Значит система столбцов расширенной матрицы $A|B$ и $A$ эквивалентны  $\implies ~ rk(A|B) =  rk(A)$.
+
+$\Leftarrow$ $rk(A|B) = rk(A)\implies$ максимальная линейно независимая система столбцов $A$ остаётся линейно независимой и в $A|B\implies$ через эту систему, а значит через систему столбцов матрицы $A$, линейно выражается последний столбец $A|B\implies\exists(k_1,\ldots,k_n)$:
+\begin{equation*}
+    \begin{pmatrix}
+        a_1^1 \\
+        a_1^2 \\
+        \vdots \\
+        a_1^m
+    \end{pmatrix} k_1 +
+    \begin{pmatrix}
+        a_2^1 \\
+        a_2^2 \\
+        \vdots \\
+        a_2^m
+    \end{pmatrix} k_2 + \ldots + 
+    \begin{pmatrix}
+        a_n^1 \\
+        a_n^2 \\
+        \vdots \\
+        a_n^m
+    \end{pmatrix} k_n = 
+    \begin{pmatrix}
+        b_1 \\
+        b_2 \\
+        \vdots \\
+        b_m
+    \end{pmatrix}
+\end{equation*}
+то есть $(k_1,\ldots, k_n)$ "--- решение СЛУ $\implies$ СЛУ совместна.
+\end{Proof}
+
+\begin{theorem}
+    Совместная СЛУ является определённой $\Leftrightarrow$ $rk(A)$ равен числу неизвестных.
+\end{theorem}
+
+\begin{theorem}
+    Размерность пространства решений СОЛУ с $n$ неизвестными и матрицей коэффициентов $A$ равняется $n - rk\;A$.
+\end{theorem}
+\begin{Proof}
+    Приводим \hyperref[eq:SOLU]{СОЛУ} путём элементарных преобразований к ступенчатому виду.
+
+    Число ненулевых уравнений в ступенчатом виде равно $rk(A)$. 
+    Общее решение системы содержит $n$ переменных:
+    $$
+    \begin{cases}
+        x_1 = c_1^1x_{r + 1} + c_2^1x_{r + 2} + \ldots + c_{n - r}^1x_n \\
+        x_2 = c_1^2x_{r + 1} + c_2^2x_{r + 2} + \ldots + c_{n - r}^2x_n \\
+        ~\vdots \\
+        x_r = c_1^rx_{r + 1} + c_2^rx_{r + 2} + \ldots + c_{n - r}^rx_n.
+    \end{cases}
+    $$
+\end{Proof}
+Частные решения:
+
+Придавая по очереди одному из свободныъ неизвестных $x_{r + 1}, \ldots, x_n$ значения $1$, а остальным значения $0$, получим решение системы:
+$$
+\begin{array}{l}
+    \bar{u}_1 = (c_1^1,c_1^2,\ldots,c_1^r,1,0,\ldots,0) \\
+    \bar{u}_2 = (c_2^1,c_2^2,\ldots,c_2^r,0,1,\ldots,0) \\
+    \vdots \\
+    \bar{u}_{n - r} = (c_{n - r}^1, c_{n - r}^2, \ldots, c_{n - r}^r, 0, 0, \ldots, 1).
+\end{array}
+$$
+Докажем, что $\bar{u}_1, \ldots, \bar{u}_{n - r}$ образуют базис пространства решений (это есть ядро линейного отображения см. определение \ref{def:core_lin}).
+\begin{Proof}
+    $\bar{u} = \lambda_1\bar{u}_1 + \ldots + \lambda_{n - r}\bar{u}_{n - r}$, $\bar{u}$ "--- решение системы.
+
+    $\bar{0} = \lambda_1\bar{u}_1 + \ldots + \lambda_{n - r}\bar{u}_{n - r} \Leftrightarrow \lambda_1 = \ldots = \lambda_{n - r} = 0$
+    $\implies \bar{u}_1, \ldots, \bar{u}_{n - r}$ "--- линейно независимы.
+    
+    Значит $(\bar{u}_1, \ldots, \bar{u}_{n - r})$ "--- базис пространства решений. 
+\end{Proof}
+
+\begin{definition}
+    Всякий базис пространства решений СОЛУ называется \textit{фундаментальной} системой решения.
+\end{definition}
+
+\subsection*{Линейные оторбажения}
+\begin{definition}
+    Пусть $U,\;V$ "--- действительные векторные пространства.
+    \textit{Линейным отображением} называется отображние $\varphi: U \to V$, удовлетворяющая свойствам:
+    \begin{enumerate}
+        \item $\varphi(\bar{a} + \bar{b}) = \varphi(\bar{a}) + \varphi(\bar{b})$
+        \item $\varphi(\lambda\bar{a}) = \lambda\varphi(\bar{a})$,
+    \end{enumerate}
+    $\lambda \in \Real$, $\bar{a},\;\bar{b} \in U$
+    
+\end{definition}
+В таком случае векторные пространства $U$ и $V$ называются \textit{изоморфными}. 
+
+Если $U$ совпадает c $V$, то $\varphi$ называется \textit{линейным преобразованием}.
+
+Вспомнив запись СЛУ через матрицы, получаем, что 
+$\varphi: \Real^n \to \Real^m$ и $\varphi(\bar{x}) = \bar{b}$, где $\bar{x} = (x_1, \ldots, x_n)$ "--- решение СЛУ.
+
+Пусть  $A$ "--- матрица коэффициентов, тогда $A_\varphi$ "--- \textit{матрица линейного отображения}.
+
+Для СОЛУ: $\varphi(\bar{x}) = \bar{0}$,где $\bar{x} = (x_1, \ldots, x_n)$ "--- решение СОЛУ.
+\begin{definition}
+    \textit{Образом} линейного отображения $\varphi: U \to V$ называется множество $Im\;\varphi = \{\bar{b} \in V, ~\varphi(\bar{x}) = \bar{b}, ~\bar{x} \in U \}$.
+\end{definition}
+\begin{definition}
+    \label{def:core_lin}
+    \textit{Ядром} линейного отображения $\varphi: U \to V$ называется множество $Ker\;\varphi = \{\bar{x} \in U:~\varphi{\bar{x}} = \bar{0} \}$.
+\end{definition}
+Заметим, что $Ker\;\varphi \subset U$ и $Im\;\varphi \subset V$.
+
+\begin{theorem}
+    $\varphi(\bar{a}) = \bar{b}$, $\varphi(\bar{x}) = \bar{b}$
+
+    $\implies \bar{x} = \bar{x} + Ker\;\varphi$.
+\end{theorem}
+
+
