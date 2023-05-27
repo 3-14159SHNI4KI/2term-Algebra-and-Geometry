@@ -11,10 +11,13 @@
 \usepackage{thmtools}
 \usepackage{longtable}
 \usepackage{array}
+\usepackage{xcolor}
 \usepackage[english,russian]{babel}
 \usepackage{minted}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tikz}
+\usepackage{gauss}
+\usepackage{titlesec}
 
 % Обозначение множества натуральных чисел
 \newcommand{\Nat}{\mathbb{N}}
@@ -29,6 +32,8 @@
 % \/\/ Теорема \/\/
 \newtheorem{theorem}{Теорема}[]
 
+% Красивый section
+\titleformat{\section}[block]{\Large\bfseries\filcenter}{}{1em}{}
 
 % \/\/ Определение \/\/
 \theoremstyle{definition}
@@ -36,7 +41,7 @@
 
 % \/\/ Лемма \/\/
 \theoremstyle{plain}
-\newtheorem{lemma}{Лемма}[]
+\newtheorem*{lemma}{Лемма}
 
 % \/\/ Следствие \/\/
 \theoremstyle{plain}
@@ -61,3 +66,9 @@
     headpunct={}]
 {Cool_Proof_style} 
 \declaretheorem[name={$\square$}, style=Cool_Proof_style, unnumbered]{Proof}
+
+% modify some things in gmatrix environments
+\renewcommand\rowmultlabel{}
+\renewcommand\colmultlabel{}
+\setlength\rowarrowsep{0pt}
+\setlength\rowopminsize{0pt}

@@ -1,1 +1,262 @@
-404
+\subsection*{Линейные формы}
+\begin{definition}
+  \textit{Линейной функцией} или \textit{линейной формой} на векторном пространстве $V$ называется функция $\alpha:\; V \to \Real$ (в общем виде $\alpha:\; V \to K$, где $K$ "--- поле), обладающая следующими свойствами:
+  \begin{enumerate}
+    \item $\alpha(\bar{x} + \bar{y}) = \alpha(\bar{x}) + \alpha(\bar{y})$
+    \item $\alpha(\lambda\bar{x}) = \lambda\alpha(\bar{x})$
+  \end{enumerate}
+\end{definition}
+\begin{definition}
+  \textit{Билинейной функцией} или \textit{билинейной формой} на векторном пространстве $V$ называется форма $\alpha: V \times V \to \Real$ (паре векторов сопоставляется действительное число), линейная по каждому аргументу, то есть:
+  \begin{enumerate}
+    \item $\alpha(\lambda_1\bar{x}_1 + \lambda_2\bar{x}_2,\,\bar{y}) = \lambda_1\alpha(\bar{x}_1,\,\bar{y}) + \lambda_2\alpha(\bar{x}_2,\,\bar{y})$
+    \item $\alpha(\bar{x}, \gamma_1\bar{y}_1 + \gamma_2\bar{y}_2) = \gamma_1\alpha(\bar{x},\bar{y}_1) + \gamma_2\alpha(\bar{x},\bar{y}_2)$
+  \end{enumerate}
+\end{definition}
+\begin{example}
+  Самый наглядный пример билинейной функции "--- скалярное произведение.
+
+  Для любых функций $f(x)$ и $g(x)$, интегрируемых на отрезке $[a,b]$, функция $I(f,g) = \int\limits_a^b{f(x)g(x)\,\mathrm{d}x}$ является билинейной функцией на $[a,b]$.
+\end{example}
+\begin{definition}
+  \textit{Скалярным произведением} называется билинейная форма, обладающая свойствами:
+  \begin{enumerate}
+    \item Симметричность $(\bar{x},\bar{y}) = (\bar{y},\bar{x})$
+    \item Положительная определённость $(\bar{x},\bar{x}) > 0$ и $(\bar{x},\bar{x}) = 0 \Leftrightarrow \bar{x} = \bar{0}$
+  \end{enumerate}
+\end{definition}
+
+\subsection*{Определитель матрицы $n$"=ого порядка}
+
+Пусть $V$ "--- действительное пространство, функция $f\!: \underbrace{V \times \ldots \times V}_{m} \to \Real$.
+\begin{definition}
+  Функция $f$ называется \textit{полилинейной}, если она линейна по каждому аргументу.
+\end{definition}
+\begin{definition}
+  Полилинейная функция называется \textit{кососимметрической}, если при перестановке любых двух аргументов она умножается на $-1$.
+\end{definition}
+
+\begin{definition}
+  \textit{Определителем} квадратной матрицы $A = (a_j^i),~ i,\,j = 1,\ldots,n$ называется число $$det\;A = \sum\limits_{k_1, k_2, \ldots, k_n}sgn(k_1, \ldots, k_n) \cdot a_{k_1}^1 \, a_{k_2}^2 \ldots a_{k_2}^n, $$
+  где $sgn(k_1, \ldots, k_n)$ "--- знак перестановки.
+\end{definition}
+
+\begin{theorem}
+  Определитель является кососимметрической полилинейной функцией строк матрицы 
+  
+  Всякая функция $f$ на множестве квадратных матриц порядка $n$, являющаяся кососимметрической полилинейной функцией строк матрицы имеет вид
+  $f(A) = f(E) \cdot det\;A$ в частности, если $f(E) = 1$, то $f(A) = det\;A$.
+\end{theorem}
+
+\begin{definition}
+  Матрица $A$ называется \textit{невырожденной}, если определитель матрицы $A$ не равен нулю. ($det\; A \neq 0)$.
+\end{definition}
+\begin{theorem}[об определителе матрицы с углом нулей]
+  Пусть $A = \begin{pmatrix}
+    B & D \\
+    0 & C
+  \end{pmatrix}$, где $B$ и $C$ квадратные матрицы. Тогда $det\;B \cdot det\;C = det\;A$.
+\end{theorem}
+
+\begin{lemma}
+  $\begin{vmatrix}
+    a_1^1 & \ldots & a_j^1 & \ldots & a_n^1 \\
+    0 & 0 & a_j^i & 0 & 0 \\
+    \vdots& \ldots& \vdots & \ldots & \vdots \\
+    a_1^n & \ldots & a_j^n & \ldots & a_n^n 
+  \end{vmatrix} = A_j^i \, \cdot \, a_j^i$, где $A_j^i$ "--- алгебраическое дополнение элемента $a_j^i$ и вычисляется $A_j^i = (-1)^{i + j} \cdot M_j^i$. 
+  
+  $M_j^i$ "--- минор элемента $a_j^i$.
+\end{lemma}
+\begin{Proof}
+  Переставляя строки и столбцы приведем матрицу к виду:
+  $$
+  \left(\begin{array}{cccc}
+    \textcolor{red}{a_j^i} & 0 & \ldots & 0 \\
+    a_j^1 & \textcolor{blue}{a_1^1} & \textcolor{blue}{\ldots} & \textcolor{blue}{a_n^1} \\
+    \vdots & \textcolor{blue}{\vdots} & \textcolor{blue}{\ddots} & \textcolor{blue}{\vdots} \\
+    a_j^n & \textcolor{blue}{a_1^n} & \textcolor{blue}{\ldots} & \textcolor{blue}{a_n^n}
+  \end{array}\right) = det\;B \cdot det\;C = a_j^i \cdot det\;C = a_j^i A_j^i.
+  $$ 
+  (красным отмечена матрица $B$, синим "--- $C$).
+\end{Proof}
+
+\subsection*{Некоторые приложения определителя}
+\begin{theorem}[Крамера]
+  Если определитель матрицы коэффициентов $A$ отличен от нуля, то система 
+  $$\begin{cases}
+    a_1^1x_1 +  a_1^2x_2 + \ldots + a_n^1x_n = b_1 \\
+    a_1^2x_1 +  a_2^2x_2 + \ldots + a_n^2x_n = b_2 \\
+    ~\vdots \\
+    a_1^nx_1 +  a_2^nx_2 + \dots + a_n^nx_n = b_n,
+\end{cases}$$
+  имеет единственное решение.
+
+  Причем $x_i = \frac{det\;A_i}{det\;A},~ i = 1,\ldots,n$, где $A_i$ "--- матрица $A$, в которой $i$ столбец заменяется на $B = \begin{pmatrix}
+    b_1\\
+    \vdots\\
+    b_n
+  \end{pmatrix}$.
+\end{theorem}
+\begin{Proof}
+  При элементарных преобразованиях системы уравнений в матрицах $A$ и $A_i$ происходит элементарные преобразования строк, следовательно формула Крамера не меняется.
+
+  Рассмотрим случай, когда $A = E$. Тогда система имеет вид: $$\begin{cases}
+    x_1 = b_1 \\
+    ~ \vdots \\
+    x_n = b_n
+  \end{cases}$$
+
+  \begin{equation*}
+    det\; A_i = 
+    \begin{gmatrix}[b]
+    1 & 0 & \cdots & b_1 & 0 & \cdots & 0 \\
+    0 & 1 & \cdots & b_2 & 0 & \cdots & 0 \\
+    \vdots & \cdots & \cdots & \vdots & \cdots &\cdots & \vdots \\
+    0 & 0 & \cdots & b_n & 0 &  \cdots & 1 
+    \colops
+    \mult{3}{\begin{array}{c}\text{i столбец}\\\downarrow\end{array}}
+   \end{gmatrix} = b_i
+\end{equation*}
+   $\implies x_i = \frac{b_i}{1} = b_i \implies$ Формула Крамера верна.
+
+   Если $det\; A \implies \exists i:~ det\;A_i = 0 \implies$ система несовместна.
+
+   Если $det\;A = \ldots = det\;A_n = 0 \implies$ система несовместна или неопределена.
+\end{Proof}
+
+\begin{theorem}
+  Пусть $A$ "--- невырожденная квадратная матрица. Тогда \begin{equation*}
+    A^{-1} = \frac{1}{det\;A} \; \begin{Vmatrix}
+      A_1^1& A_1^2 & \ldots & A_1^n \\
+      A_2^1 & A_2^2 & \ldots & A_2^n \\
+      \vdots & \vdots & \ldots & \vdots \\
+      A_n^1 & A_n^2 & \ldots & A_n^n
+    \end{Vmatrix}
+  \end{equation*}
+  (обратите внимание, что матрица транспонирована).
+\end{theorem}
+
+\begin{Proof}
+  $A \cdot A^{-1} = A^{-1} \cdot A = E$
+
+  $\underbrace{AX = E}_{\substack{\text{Уравнение относительно} \\ \text{столбцов матрицы } X}}\implies X = A^{-1}$, то есть $A \cdot X_j = E_j$
+
+  Эта система $n$ линейных уравнений относительно элементов $x_j^1, \, x_j^2, \ldots,\, x_j^n$.
+
+  По формулам Крамера получим:
+  \begin{equation*}
+    x_j^i = \frac{1}{det\;A}\, \begin{vmatrix}
+      a_1^1 & \cdots & 0 & \cdots & a_n^1 \\
+      a_2^1 & \cdots & 0 & \cdots & a_n^2 \\
+      \vdots && \vdots && \vdots \\
+      a_1^j & \cdots & 1 & \cdots & a_n^j \\
+      \vdots && \vdots && \vdots \\
+      a_n^1 & \cdots & 0 & \cdots & a_n^n
+    \end{vmatrix} = \frac{A_i^j}{det\;A}.
+  \end{equation*}
+\end{Proof}
+
+Второй способ вычисления обратной матрицы:
+$(A|E)$ приводим через элементарные преобразования к $(E|A^{-1})$
+\begin{example}
+  \begin{gather*}
+    \begin{pmatrix}
+       a_1^1 & a_2^1 \\ 
+       a_1^2 & a_2^2
+    \end{pmatrix} \cdot
+    \begin{pmatrix} 
+      x_1^1 & x_2^1 \\ 
+      x_1^2 & x_2^2
+    \end{pmatrix} =
+    \begin{pmatrix} 
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix} \\
+    \begin{pmatrix}
+      a_1^1 & a_2^1 \\ 
+      a_1^2 & a_2^2
+   \end{pmatrix} \cdot
+   \begin{pmatrix}
+    x_1^1 \\
+    x_1^2
+   \end{pmatrix} = 
+   \begin{pmatrix}
+    1 \\ 0
+   \end{pmatrix} \\
+   \text{Например, }
+   \begin{pmatrix}
+    1 & 2\\
+    3 & 4
+   \end{pmatrix} \cdot
+   \begin{pmatrix}
+    x_1^1 \\ x_1^2
+   \end{pmatrix} = 
+   \begin{pmatrix}
+    1 \\ 0
+   \end{pmatrix} \\ 
+   \left(\begin{array}{cc|c}
+    1 & 2 & 1 \\
+    3 & 4 & 0
+   \end{array}\right) \thicksim 
+   \left(\begin{array}{cc|c}
+    1 & 2 & 1 \\
+    0 & -2 & -3
+   \end{array}\right) \thicksim 
+   \left(\begin{array}{cc|c}
+    1 & 0 & -2 \\
+    0 & -2 & -3
+   \end{array}\right) \thicksim 
+   \left(\begin{array}{cc|c}
+    1 & 0 & -2 \\
+    0 & 1 & 3/2
+   \end{array}\right) \\
+   \begin{cases}
+    x_1^1 = -2 \\
+    x_1^2 = 3 / 2
+   \end{cases} \\
+   \text{Аналогично с вторым столбцом матрицы } X.
+  \end{gather*}
+\end{example}
+\subsection*{Ранг матрицы}
+
+\begin{definition}
+  \textit{Минором} $k$"=го порядка матрицы $A$ называется определитель порядка $k$, построенный из $k^2$ элементов этой матрицы, расположенныъ на пересечении произвольно выбранных $k$ строк и $k$ столбцов.
+\end{definition}
+\begin{definition}
+  \textit{Рангом} ненулевой  матрицы $A_{n\times m}$ называется натуральное число $k:~ 1 \leq k \leq min(m,\, n)$, удовлетворяющая двум условиям:
+  \begin{enumerate}
+    \item У матрицы $A$ существует по крайней мере один минор $k$"=го порядка, отличный от нуля. $M_k \neq 0$.
+    \item Если у матрицы $A$ существует миноры $k+1$"=го порядка, то все они равны нулю. $M_{k+1} = 0$
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Если $rk\,A = k$, то любой её $M_k \neq 0$ называется \textit{базисным} или \textit{ранговыми}. Строки и столбцы базисного минора называются \textit{базисами}.
+\end{definition}
+\begin{theorem}[о базисном миноре]
+  У любой матрицы $A$ всякий столбец (строка) является линейной комбинацией базисных столбцов (строк).
+\end{theorem}
+\begin{Proof}
+  Пусть $rk\,A = k$ и $M_k$ "--- базисный минор, расположенный в левом верхнем углу.
+
+  Построим определитель окаймляющий $M_k$, который получается добавлением $i$ строки и $j$ столбца.
+  \begin{equation*}
+    \Delta = \begin{vmatrix}
+      a_n^1 & \cdots & a_k^1 &  a_j^1 \\
+      \vdots && \vdots & \vdots \\
+      a_j^k & \cdots & a_k^k  & a_j^k \\
+      a_1^i & \cdots & a_k^i & a_j^i \\
+    \end{vmatrix} = 0
+  \end{equation*}
+  (так как $rk\,A = k,~ M_k \neq 0, ~M_{k + 1} = 0$)
+
+  Раскладывая $\Delta$ по элементам последней строки получим:
+  \begin{gather*}
+    a_1^i A_1^{k+1} + \ldots + a_k^i A_k^{k + 1} + a_j^i M_k = 0 \\
+    a_j^i = a_1^i \frac{-A_1^{k + 1}}{M_k} + \ldots + a_k^i \frac{-A_k^{k + 1}}{M_k} \\
+    a_j^i = \lambda_1 a_1^i + \ldots + \lambda_k a_k^i \\
+    a_j^i \text{ линейно выражается через остальные}
+  \end{gather*}
+\end{Proof}
+

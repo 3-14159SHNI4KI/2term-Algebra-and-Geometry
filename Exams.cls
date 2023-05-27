@@ -23,4 +23,6 @@
     \end{center}
 }
 
+\newcommand{\sectionbreak}{\clearpage}
+
 
