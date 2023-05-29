@@ -282,3 +282,191 @@ $\bar{e}_3 = \lambda \, \bar{f}_1 + \mu \, \bar{f}_2 + \bar{f}_3$
 \end{Proof}
 
 \subsection*{Линейный оператор}
+\begin{definition}
+  \textit{Линейным оператором} или \textit{линейным преобразованием} векторного пространства $L$ называется линейное отображение в себя $A: L \to L$.
+  
+  Выполняются следующие условия:
+  \begin{enumerate}
+    \item $A(\bar{x} + \bar{y}) = A\, \bar{x} + A \, \bar{y}$
+    \item $A(\lambda\bar{x}) = \lambda A\, \bar{x}$
+  \end{enumerate}
+\end{definition}
+
+Пусть $(\bar{e}_1, \ldots, \bar{e}_n)$ "--- базис $L$,
+\begin{gather*}
+  A(\bar{e}_1) = a_1^1\bar{e}_1 + a_1^2\bar{e}_2 + \ldots + a_1^n\bar{e}_n \\
+  \vdots \\
+  A(\bar{e}_n) = a_n^1\bar{e}_1 + a_n^2\bar{e}_2 + \ldots + a_n^n \bar{e}_n \\
+  \underbrace{(A\, \bar{e}_1, \ldots, A\, \bar{e}_n)}_{\text{матрица"=строка}} = \underbrace{(\bar{e}_1, \ldots, \bar{e}_n)}_{\text{матрица"=строка}} \cdot \begin{pmatrix}
+    a_1^1 & \cdots & a_n^1 \\
+    \vdots & \ddots & \vdots \\
+    a_1^n & \cdots & a_n^n
+  \end{pmatrix} \\
+  A\, \bar{e}_i = \sum_{k = 1}^n \, a_i^k \bar{e}_k, ~ k = 1, \ldots, n 
+\end{gather*}
+\begin{definition}
+  Матрица $\begin{pmatrix}
+    a_1^1 & \cdots & a_n^1 \\
+    \vdots & \ddots & \vdots \\
+    a_1^n & \cdots & a_n^n
+  \end{pmatrix}$ называется \textit{матрицей линейного оператора } $A$.
+\end{definition}
+
+Рассмотрим переход от базиса $(\bar{e}_1, \ldots, \bar{e}_n)$ к $(\bar{e}_1', \ldots, \bar{e}_n')$:
+
+$(\bar{e}_1, \ldots, \bar{e}_n) = (\bar{e}_1', \ldots, \bar{e}_n') \cdot C$, где $C$ "--- матрица перехода от $(\bar{e}_i)$ к $(\bar{e}_i')$.
+
+$(A\, \bar{e}_1', \ldots, A\, \bar{e}_n') = (\bar{e}_1', \ldots, \bar{e}_n') \cdot A'$, где $A'$ "--- матрица линейного оператора в базисе $(\bar{e}_i')$. Аналогично для базиса $(\bar{e}_1, \ldots, \bar{e}_n)$.
+
+$(A\, \bar{e}_1', \ldots, A\, \bar{e}_n') = (A\, \bar{e}_1, \ldots, A\, \bar{e}_n) \cdot C = (\bar{e}_1, \ldots, \bar{e}_n) \cdot A\, C \implies$
+
+$(\bar{e}_1', \ldots, \bar{e}_n') \cdot A' = (\bar{e}_1, \ldots, \bar{e}_n) \cdot A\, C \implies$
+
+$\underline{A' = C^{-1} \cdot A \cdot C}$
+
+\begin{definition}
+  Подпространство $\mathcal{U} \in L$ называется \textit{инвариантным} относительно оператора $A$, если $A\,(\mathcal{U}) \in \mathcal{U}$.
+
+  То есть $\bar{x} \in \mathcal{U} \implies A\, \bar{x} \in \mathcal{U}$.
+\end{definition}
+
+Если $\mathcal{U} = <\! \bar{e}_1, \ldots, \bar{e}_k \!>$, а $L =  <\! \bar{e}_1, \ldots, \bar{e}_k, \bar{e}_{k + 1}, \ldots, \bar{e}_n\!>$ (а это всегда можно сделать), то матрица оператора $A$ в этом базисе имеет вид:
+$$
+A = \begin{pmatrix}
+  B & D\\
+  0 & C
+\end{pmatrix},
+$$
+где $B$ "--- матрица оператора $A_\mathcal{U}$ в базисе $<\! \bar{e}_1, \ldots, \bar{e}_k \!>$, $C$ "--- квадратная матрица порядка $n - k$ и $D$ "--- какая"=то матрица размера $k \times (n - k)$. Верно и обратное.
+
+Если же пространство $L$ можно разложить на сумму двух инвариантных подпространств $\mathcal{U}_1$ и $\mathcal{U}_2$: $L = \mathcal{U}_1 \oplus \mathcal{U}_2$, то матрица линейного оператора имеет вид:
+$$
+A = \begin{pmatrix}
+  B & 0 \\
+  0 & C
+\end{pmatrix},
+$$
+где $B$ "--- матрица оператора $A_{\mathcal{U}_1}$, $C$ "--- матрица оператора $A_{\mathcal{U}_2}$.
+
+\subsection*{Собственные векторы}
+\begin{definition}
+  Пусть $A: L \to L$ "--- линейный оператор. Вектор $\bar{x} \neq 0$ называется \textit{собственным} вектором оператора $A$, если $A\, \bar{x} = \lambda \bar{x}, ~ \lambda \in \Real$, где число $\lambda$ "--- \textit{собственное значение} оператора $A$, отвечающие собственному вектору $\bar{x}$.
+\end{definition}
+
+Если $(\bar{e}_1, \ldots, \bar{e}_n)$ "--- базис из собственных векторов, то матрица линейного оператора выглядит следующим образом:
+$$
+  A = \begin{pmatrix}
+    \lambda_1 & 0 & \cdots & 0 \\
+    0 & \lambda_2 & \cdots & 0 \\
+    \vdots & \vdots && \vdots \\
+    0 & 0 & \cdots & \lambda_n
+  \end{pmatrix}
+$$
+\begin{theorem}
+  Для существования $\bar{x}$ и $\lambda$ необходимо и достаточно $det\, (A - \lambda E) = 0$, где $A$ "--- матрица линейного оператора, $E$ "--- единичная матрица.
+\end{theorem}
+\begin{Proof}
+  $A\, \bar{x} = \lambda \bar{x}$
+
+  $A\, \bar{x} - \lambda \bar{x} = 0$
+
+  $(A - \lambda E)\bar{x} = 0$ Записав в координатном виде это равенство, получим однородную систему линейных уравнений.
+
+
+  У этой системы есть ненулевое решение $\Leftrightarrow det\, (A - \lambda E) = 0$.
+\end{Proof}
+
+\begin{definition}
+  Многочлен $f_A(t) = det\, (A - tE)$ называется \textit{характеристическим} многочленом оператора $A$.
+\end{definition}
+
+\begin{theorem}
+  Характеристический многочлен не зависит от выбора матрицы линейного оператора, то есть $det\, (A_1 - tE) = \det (A_2 - tE)$, где $A_1, \, A_2$ "--- матрицы линейного оператора $A$ в базисе $(\bar{e}_i)$ и $(\bar{e}_j)$.
+\end{theorem}
+\begin{Proof}
+  Пусть $C$ "--- матрица перехода из $\bar{e}_i$ в $\bar{e}_i'$, то есть $\bar{e}_i' = \sum\limits_{j = 1}^n \, C_i^j\; \bar{e}_j$
+
+  $A_2 = C^{-1} \cdot A_1 \cdot C$
+
+  $\det(A_2 - tE) = \det(C^{-1}\, A_1 \, C - tE) = \det(C^{-1}\, A_1\, C - t\, C^{-1}\, C) = $
+
+  $= \det C^{-1}(A_1 - tE)C = \det C^{-1} \cdot \det (A_1 - tE) \cdot \det C = $
+
+  $= det(\underbrace{C^{-1} \cdot C}_{E}) \cdot \det(A_1 - tE) = \det(A_1 - tE)$.  
+\end{Proof}
+
+\begin{theorem}
+  Собственное значение оператора $A$ "--- это корень его характеристического многочлена.
+\end{theorem}
+
+\begin{theorem}
+  Любой линейный оператор в комплексном линейном пространстве имеет собственный вектор
+\end{theorem}
+
+\begin{theorem}
+  Пусть $A: L \to L,~ L \in \Real$, тогда существует одномерное или двумерное инвариантное подпространство.
+\end{theorem}
+
+При заданном значении $\lambda$ собственные векторы находятся из системы однородных линейных уравнений
+$$
+  (A - \lambda E)X = 0,
+$$
+где $X$ обозначает столбец координат неизвестного вектора. Вместе с нулевым вектором они составляют подпространство
+$$
+  V_\lambda(A) = \ker(A - \lambda E),
+$$
+называемое \textit{собственным подпространством} оператора $A$, отвечающим собственному значению $\lambda$. Его размерность ранва $n - \operatorname{rk}(A - \lambda E)$.
+
+\begin{theorem}[о собственных подпространствах, отвечающих различным собственным значениям оператора]
+  Собственные подпространства, отвечающие различным собственным значениям $\lambda_1, \ldots, \lambda_k$ оператора $A$, линейно независимы.
+\end{theorem}
+
+\begin{theorem}[Необходимое и достаточное условие существования базиса из собственных векторов линейного оператора]
+  Для существования базиса из собственных векторов линейного оператора $A$ необходимо и достаточно, чтобы выполнялись следующие условия:
+  \begin{enumerate}
+    \item характеристический многочлен $f_A(t)$ разлагается на линейные множители
+    \item Размерность каждого собственного подпространства равна кратности соответствующего корня многочлена $f_A(t)$.
+  \end{enumerate}
+\end{theorem}
+
+\subsection*{Линейные операторы и билинейные функции в евклидовом пространстве}
+\begin{definition}
+  Пусть $A$ "--- линейный оператор. Тогда билинейная функция оператора $A$ опеределяется как
+  $$
+    \varphi_A(\bar{x}, \, \bar{y}) = (\bar{x} A\, \bar{y}) 
+  $$
+  Если $\varphi_A(\bar{x}, \, \bar{y}) = \varphi_A(\bar{y},\, \bar{x})$, то $A$ называют \textit{симметрическим} или \textit{самосопряженным} оператором.
+\end{definition}
+
+\begin{theorem}
+  В ортонормированном базисе матрицы $\varphi_A$ и $A$ совпадают.
+\end{theorem}
+\begin{Proof}
+  Пусть $(\bar{e}_i)$ "--- ортонормированный базис.
+
+  $varphi_A(\bar{e}_i, \bar{e}_k) = \bar{e}_i A\, \bar{e}_k = \bar{e}_i \sum\limits_{j = 1}^n \, a_k^j \, \bar{e}_j = \sum\limits_{j = 1}^n \, a_k^j \, \bar{e}_j \cdot \bar{e}_i = \sum\limits_{j = 1}^n \, a_k^j \, \delta_j^i = a_k^i$, так как $\delta_j^i = 1 \Leftrightarrow i = j$.
+\end{Proof}
+
+\begin{theorem}
+  Пусть $V \subset E, ~ AV \subset V$. Тогда $AV^{\bot} \subset V^{\bot}$. То есть, если подпространство $V$ инвариантно, то и его ортогональное дополнение $V^{\bot}$ инвариантно.
+\end{theorem}
+\begin{Proof}
+  $(\bar{x}, \, \bar{y}) = \bar{0},~ \bar{x} \in V, ~ \bar{y} \in V^{\bot}$
+
+  $\bar{x} A\, \bar{y} = \varphi_A(\bar{x}, \, \bar{y}) = \varphi_A(\bar{y},\, \bar{x}) = \bar{y} A\, \bar{x} = \bar{0}$
+
+  $\underbrace{\bar{x}}_{\in \, V} A\, \bar{y} = \bar{0} \implies A\, \bar{y} \in \, V^{\bot} \implies AV^{\bot} \subset V^{\bot} \implies$
+  
+  $V^{\bot}$ "--- инвариантное подпространство. 
+\end{Proof}
+
+\begin{theorem}
+  Для самосопряженного оператора существует ортонормированный базис, состоящий из собсвтенных векторов.
+\end{theorem}
+
+\begin{theorem}
+  Пусть $\varphi$ "--- симметрическая билинейная форма. Тогда существует такой ортонормированный базис, в котором форма имеет канонический вид:
+  $$
+    \varphi(\bar{x}, \, \bar{y}) = \lambda_1 x_1 y_1 + \lambda_2 x_2 y_2 + \ldots + \lambda_n x_n y_n
+  $$
+\end{theorem}
