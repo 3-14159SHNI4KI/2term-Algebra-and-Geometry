@@ -2,7 +2,6 @@
 \begin{definition}
   Базис пространства $L$ называется \textit{согласованным} с подпространством $L_1$, если $L_1$ является линейной оболочкой какой"=то части базисных векторов.
 \end{definition}
-\begin{example}
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
@@ -17,7 +16,6 @@
     \caption{Пример несогласованного базиса}
   \end{subfigure}
 \end{figure}
-\end{example}
 
 \begin{definition}
   \textit{Суммой} подпространств $L_1,L_2, \ldots, L_k$ называется совокупность векторов вида $\bar{u}_1 + \bar{u}_2 + \ldots + \bar{u}_k$, где $\bar{u}_i \in L_i,~ i = 1,\ldots,k.$
@@ -85,7 +83,7 @@ $\forall \, \bar{x},\; \bar{y} \in V$.
 $\eps_{i} \, (\bar{e}_j) = \delta_{ij} = \begin{cases}
   1&, \text{если } i = j \\
   0&, \text{если } i \neq j.
-\end{cases}$
+\end{cases} ~~\text{(символ Кронекера)}$
 
 $\eps_i(\bar{x}) = x_i$.
 
@@ -100,9 +98,9 @@ $\eps_i(\bar{x}) = x_i$.
   Функция $\alpha$ называется \textit{невырожденной}, если ядро состоит из нуля ($Ker\, \alpha = 0$).
 \end{definition}
 
-Функция $\alpha$ является симметрической, если $\alpha{\bar{x}, \bar{y}} = \alpha{\bar{y}, \bar{x}}$.
+Функция $\alpha$ является симметрической, если $\alpha(\bar{x}, \bar{y}) = \alpha(\bar{y}, \bar{x})$.
 
-Функция $\alpha$ является кососимметрической, если $\alpha{\bar{x}, \bar{y}} = -\alpha{\bar{y}, \bar{x}}$.
+Функция $\alpha$ является кососимметрической, если $\alpha(\bar{x}, \bar{y}) = -\alpha(\bar{y}, \bar{x})$.
 
 \begin{definition}
   Пусть $\alpha$ симметрическая билинейная функция над полем $K,~ char\, K \neq 2$. Функция $q: V \to K$, которая определяется как $q(\bar{x}) = \alpha(\bar{x}, \bar{x})$, называется \textit{квадратичной} функцией или формой, ассоциированной с функцией $\alpha$
@@ -129,8 +127,10 @@ $\alpha(\bar{x},\, \bar{y}) = \frac{1}{2} (q(\bar{x} + \bar{y}) - q(\bar{x}) - q
 \end{definition}
 
 \begin{definition}
-  \textit{Ортогональным дополнением} к подпространству $U$ относительно $\alpha$ называется подпространство $U^+ = {\bar{y}:~ \alpha(\bar{x}, \, \bar{y}) = 0, ~ \forall \, \bar{x} \in U}$.
-\end{definition}
+  \textit{Ортогональным дополнением} к подпространству $U$ относительно $\alpha$ называется подпространство $U^+ = \{\bar{y}:~ \alpha(\bar{x}, \, \bar{y}) = 0, ~ \forall \, \bar{x} \in U\}$.
+
+  Заметим, что $U^{+} = Ker\; \alpha$.
+\end{definition}  
 
 \begin{figure}[H]
   \centering
@@ -222,7 +222,7 @@ $$q(\bar{x}) = x_1^2 + \ldots + x_r^2,$$ где $r$ "--- ранг квадрат
   $$
   где $(\bar{e}_i,\, \bar{e}_j)$ "--- скалярное произведение. Так как функция симметрическая, то матрица симметрична относительно главной диагонали.
 \end{definition}
-Матрица Грама обладают следующими свойствами:
+(Не было на лекциях) Матрица Грама обладают следующими свойствами:
 \begin{itemize}
   \item[] Определитель матрицы Грама системы $n$ векторов равен квадрату объёма 
   $n$"=мерного параллелепипеда, натянутого на эти векторы. Из этого следует, что в случае трёхмерного пространства определитель Грама трёх векторов равен квадрату их смешанного произведения.
@@ -245,7 +245,7 @@ $$q(\bar{x}) = x_1^2 + \ldots + x_r^2,$$ где $r$ "--- ранг квадрат
 \end{gather*}
 
 По теореме \ref{theorem: gram_schmidt} мы знаем, когда существует ортогональный базис, но
-\textbf{Как построить ортогональный базис}
+\textbf{Как построить ортогональный базис?}
 
 Пусть $(\bar{e}_1, \ldots, \bar{e}_n)$ "--- произвольный базис. Построим ортогональный базис $(\bar{f}_1, \ldots, \bar{f}_n)$.
 
@@ -259,9 +259,13 @@ $\lambda_1 = \frac{(\bar{e}_2, \, \bar{f}_1)}{(\bar{f}_1, \bar{f}_1)} \implies \
 
 $\bar{e}_3 = \lambda \, \bar{f}_1 + \mu \, \bar{f}_2 + \bar{f}_3$
 
-Скалярно умножаем на $f_1$: $\lambda = \frac{(\bar{e}_3, \, \bar{f}_1)}{(\bar{f}_1, \, \bar{f}_1)} \implies \bar{f}_3 = \bar{e}_3 - \lambda \, \bar{f}_1 - \mu \, \bar{f}_2$
+Скалярно умножаем на $f_1$: $\lambda = \frac{(\bar{e}_3, \, \bar{f}_1)}{(\bar{f}_1, \, \bar{f}_1)}$
 
-Следовательно $\bar{f}_i = \bar{e}_i = \sum\limits_{k = 1}^{i - 1} \frac{(\bar{e}_i, \, \bar{f}_k)}{(\bar{f}_k, \, \bar{f}_ k)} \cdot \bar{f}_k, ~ i = 1, \ldots, n$
+Скалярно умножаем на $f_2$: $\mu = \frac{(\bar{e}_3, \, \bar{f}_2)}{(\bar{f}_2, \, \bar{f}_2)}$
+
+$\implies \bar{f}_3 = \bar{e}_3 - \lambda \, \bar{f}_1 - \mu \, \bar{f}_2$
+
+Следовательно $\bar{f}_i = \bar{e}_i - \sum\limits_{k = 1}^{i - 1} \frac{(\bar{e}_i, \, \bar{f}_k)}{(\bar{f}_k, \, \bar{f}_ k)} \cdot \bar{f}_k, ~ i = 1, \ldots, n$
 
 \begin{definition}
   Евклидовые векторные пространства $V, \, U$ называются изоморфными, если существует биективное отображение $f: V \to U$ являющаяся изоморфизмом и выполняется равенство $(f(\bar{a}), \, f(\bar{b})) = (\bar{a}, \bar{b}),~ \forall \, \bar{a}, \, \bar{b} \in V.$
