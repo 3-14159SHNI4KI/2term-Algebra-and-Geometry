@@ -146,15 +146,15 @@ $ AX = B$.
 \subsection*{Векторное пространтсво}
 
 \begin{definition}
-    \textit{Векторным пространством} над полем $K$ называется множество $V$ с операциями сложения и умножения на элемент поля $K$, обладающая следующими свойствами:
+    \textit{Векторным пространством} над полем $K$ называется множество $V$ с операциями сложения и умножения на элемент поля $K$, обладающее следующими свойствами:
     \begin{enumerate}
         \item $V$ "--- аддитивная абелева группа.
-        \item $\lambda(a + b) = \lambda a + \lambda b$
-        \item $(\lambda + \mu)a = \lambda a + \mu a$
-        \item $\lambda(\mu a) = (\lambda \mu)a$
-        \item $1 \cdot a = a$
+    \item $\lambda(\bar{a} + \bar{b}) = \lambda \bar{a} + \lambda \bar{b}$
+        \item $(\lambda + \mu)\bar{a} = \lambda \bar{a} + \mu \bar{a}$
+        \item $\lambda(\mu \bar{a}) = (\lambda \mu)\bar{a}$
+        \item $1 \cdot \bar{a} = \bar{a}$
     \end{enumerate}
-    $\lambda,\mu \in K,~a,b \in V$.
+    $\lambda,\mu \in K,~\bar{a},\bar{b} \in V$.
 \end{definition}
 
 \begin{definition}
@@ -186,7 +186,7 @@ $ AX = B$.
     Ранг матрицы равен числу ненулевых строк ступенчатой матрицы, к которой она приводится элементарными преобразованиями строк.
 \end{theorem}
 
-Линейная зависимость между столбцами матриц не меняется при элементарных преобразований строк. Ранг системы её столбцов не меняется при элементарных преобразований строк.
+Линейная зависимость между столбцами матрицы не меняется при элементарных преобразований строк. Ранг системы её столбцов не меняется при элементарных преобразований строк.
 
 Ранг системы строк любой матрицы равен рангу системы столбцов этой матрицы.
 
@@ -302,7 +302,7 @@ $$
 \subsection*{Линейные отображения}
 \begin{definition}
     Пусть $U,\;V$ "--- действительные векторные пространства.
-    \textit{Линейным отображением} называется отображение $\varphi: U \to V$, удовлетворяющая свойствам:
+    \textit{Линейным отображением} называется отображение $\varphi: U \to V$, удовлетворяющее свойствам:
     \begin{enumerate}
         \item $\varphi(\bar{a} + \bar{b}) = \varphi(\bar{a}) + \varphi(\bar{b})$
         \item $\varphi(\lambda\bar{a}) = \lambda\varphi(\bar{a})$,
@@ -325,7 +325,7 @@ $\varphi: \Real^n \to \Real^m$ и $\varphi(\bar{x}) = \bar{b}$, где $\bar{x} 
 \end{definition}
 \begin{definition}
     \label{def:core_lin}
-    \textit{Ядром} линейного отображения $\varphi: U \to V$ называется множество $Ker\;\varphi = \{\bar{x} \in U:~\varphi{\bar{x}} = \bar{0} \}$.
+    \textit{Ядром} линейного отображения $\varphi: U \to V$ называется множество $Ker\;\varphi = \{\bar{x} \in U:~\varphi({\bar{x}}) = \bar{0} \}$.
 \end{definition}
 Заметим, что $Ker\;\varphi \subset U$ и $Im\;\varphi \subset V$.
 
