@@ -9,13 +9,13 @@
 \end{definition}
 Группа называется \textit{абелевой} или \textit{коммутативной}, если $ab=ba,~\forall a,\;b \in G$.
 
-В любой группе могжет быть определена степень элемента $g \in G$ с целыми показателями:
+В любой группе может быть определена степень элемента $g \in G$ с целыми показателями:
 $$ g^k = 
 \begin{cases}
   \underbrace{g \cdot g \ldots \ \cdot g}_k,& \text{если } k > 0 \\
   e,& \text{если } k = 0 \\
   \underbrace{g^{-1} \cdot g^{-1} \ldots \ \cdot g^{-1}}_k,& \text{если } k < 0 \\
-\end{cases}, k \in \Zint
+\end{cases}, ~~~k \in \Zint
 $$
 \begin{definition}
   Степени элемента $g$ образуют подгруппу группы $G$. Она называется \textit{циклической} и обозначается $<\!g\!>$
@@ -41,11 +41,12 @@ $$
 
   $g^m = g^{np} \cdot g^r = (\underbrace{g^n}_{e})^p \cdot g^r = g^r$
 
-  $\Rightarrow ~ g^m = e \implies g^r = e \implies r = 0$
-  $\Leftarrow$ так как $n \mid m$, то $r = 0$.
+  $\Rightarrow ~ g^m = e \implies g^r = e \implies r = 0 \implies n \mid m$
+
+  $\Leftarrow$ так как $n \mid m$, то $r = 0  \implies g^r = g^0 = e$.
   \item $g^k = g^l \implies g^{k - l} = e$
   
-  $\implies$ по первому утверждению $(k - l)\;\vdots \;n \implies k - l = np$
+  $\implies$ по первому утверждению $(k - l)\;\vdots \;n \implies k \equiv l$  (mod $m$)
 \end{enumerate}
 \end{Proof}
 
@@ -53,20 +54,20 @@ $$
 
 Порядком элемента $g$ в \textit{аддитивной} группе называют наименьшее из натуральных $m$, такое, что $\underbrace{g+g+\ldots+g}_m = 0$(если $m$ существует).
 \begin{theorem}
-  Если $ord\;g = n$, то $ord\;g^k = \frac{n}{(n,k)},~(n,k) = \gcd(n,k)$
+  Если $ord\;g = n$, то $ord\;g^k = \frac{n}{(n,k)},~(n,k) = \gcd(n,k)$ (НОД($n,k$))
 \end{theorem}
 \begin{Proof}
   Пусть $ord\;g^k = m$ и $(n,k) = d$. Тогда $n = n_1d,~ k = k_1d, ~(n_1,k_1) =1$.
 
   Так как $ord\;g = n$, то $g^n = e$. Также $(g^k)^m = e \implies km\;\vdots\;n \implies k_1dm\;\vdots \; n_1d \implies k_1m \;\vdots\; n_1$
   
-  Так как $(k_1,n_1) = 1 \implies m\;\vdots\;n_1 \implies m = pn_1 = \frac{pn_1d}{d} = \frac{pn}{d} \implies p = 1$.
+  Так как $(k_1,n_1) = 1 \implies m\;\vdots\;n_1 \implies m = pn_1 = \frac{pn_1d}{d} = \frac{pn}{d}$ Так как $m = ord\; g^k$, то есть наименьшее натуральное число, удовлетворяющее определению порядка, $\implies p = 1$.
 
-  $\implies ord\;g^k = \frac{n}{k} = \frac{n}{(n,k)}$.
+  $\implies ord\;g^k = m = \frac{n}{d} = \frac{n}{(n,k)}$.
 \end{Proof}
 
 \begin{definition}
-  Группа $G$ называется \textit{циклической}, если существует такой элемент в степени которого образует группу $G$. 
+  Группа $G$ называется \textit{циклической}, если существует такой элемент степени которого образует группу $G$. 
   
   $G = <\!g\!>$ и такой элемент называется \textit{образующим}.
 \end{definition}
@@ -95,9 +96,14 @@ $$
 
   
 \end{example}
-Всякая подгруппа циклической группы является циклической. 
+\begin{theorem}
+  Всякая подгруппа циклической группы является циклической. 
+  
+\end{theorem}
 
-В циклической группе порядка $n$ порядок любой подгруппы делит $n$ и для любого делителя $p$ числа $n$ существует одна подгруппа порядка $n$.
+\begin{theorem}
+  В циклической группе порядка $n$ порядок любой подгруппы делит $n$ и для любого делителя $p$ числа $n$ существует одна подгруппа порядка $p$.
+\end{theorem}
 
 \subsection*{Разбиение на смежные классы}
 
@@ -176,7 +182,7 @@ $$
 \end{Proof}
 
 \begin{definition}
-  Подгруппа $H$ группы $G$ называется \textit{нормальной}, если $gH=Hg$, то есть $\forall g \in G:~ gHg^{-1} = H$.
+  Подгруппа $H$ группы $G$ называется \textit{нормальной}, если $gH=Hg$, то есть $\forall g \in G:~ gHg^{-1} = H$ или $\forall g \in G, ~ \forall h \in H: ~ g \cdot h \cdot g^{-1} \in H$.
 
   Обозначение: $H \lhd G$, $G \rhd H$.
 \end{definition}
@@ -206,9 +212,9 @@ $eH$ "--- единица этой группы.
 
     $\forall g \in G_1,~a \in Ker\; f,~ g\,a\,g^{-1} \stackrel{?}{\in} Ker\;f$.
 
-    $f(g\,a\,g^{-1}) = f(g)\cdot f(a)\cdot f(g^{-1}) = f(g)\cdot e \cdot f(g^{-1}) = f(g)f(g^{-1}) = e$
+    $f(g\,a\,g^{-1}) = f(g)\cdot f(a)\cdot f(g^{-1}) = f(g)\cdot e \cdot f(g^{-1}) = f(g)f(g^{-1}) = f(g)(f(g))^{-1}= e$
     
-    $\implies g\,a\,g^{-1} \in Ker\;f$.
+    $\implies g\,a\,g^{-1} \in Ker\;f \implies Ker\; f$ есть нормальная подгруппа $G_1$.
   \end{Proof}
   \item $f(g_1) = f(g_2) \implies g_1 \equiv g_2 (mod\; Ker\;f)$
   \begin{Proof}
